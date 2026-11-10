@@ -1,0 +1,47 @@
+{
+  "name": "meubairro-broker-teste",
+  "modelVersion": "9.1",
+  "authenticationproviders": [
+    {
+      "name": "plain",
+      "type": "Plain",
+      "secureOnlyMechanisms": [],
+      "users": [
+        {
+          "name": "guest",
+          "type": "managed",
+          "password": "guest"
+        }
+      ]
+    }
+  ],
+  "ports": [
+    {
+      "name": "AMQP",
+      "port": "${qpid.amqp_port}",
+      "authenticationProvider": "plain",
+      "virtualhostaliases": [
+        {
+          "name": "nameAlias",
+          "type": "nameAlias"
+        },
+        {
+          "name": "defaultAlias",
+          "type": "defaultAlias"
+        },
+        {
+          "name": "hostnameAlias",
+          "type": "hostnameAlias"
+        }
+      ]
+    }
+  ],
+  "virtualhostnodes": [
+    {
+      "name": "default",
+      "type": "Memory",
+      "defaultVirtualHostNode": "true",
+      "virtualHostInitialConfiguration": "{\"type\": \"Memory\"}"
+    }
+  ]
+}
